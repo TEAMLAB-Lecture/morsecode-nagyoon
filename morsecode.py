@@ -83,18 +83,8 @@ def is_validated_english_sentence(user_input):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    temp_str = user_input
-    for char in '.,?!':
-        temp_str = temp_str.replace(char, '')
-    
-    if set(temp_str) == {' '} or len(set(temp_str))==0:
-        return False
-
-    for char in user_input:
-        if char.isdigit() or char in "_@#$%^&*()-+=[]{}\"\';:\|`~":
-            return False
-    
-    result = True
+    temp_str = ''.join([char for char in user_input if char not in '.,?! '])
+    result = temp_str.isalpha()
 
     return result
     # ==================================
@@ -125,14 +115,17 @@ def is_validated_morse_code(user_input):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    morse_code_dict = get_morse_code_dict()
-    for char in user_input:
-          if char not in '.- ':
-            return False
     
-    for morse in user_input.split(' '):
-        if morse not in morse_code_dict.values() and morse != '':
-            return False
+
+    result = True
+    morse_code_dict = get_morse_code_dict()
+
+    morse_list = user_input.split()
+    for morse in morse_list:
+        if morse not in morse_code_dict.values():
+            result = False
+
+    return result
         
     
     result = True
