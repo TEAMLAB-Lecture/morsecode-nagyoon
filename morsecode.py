@@ -238,13 +238,15 @@ def decoding_sentence(morse_sentence):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = ""
+    result = []
     for morse in morse_sentence.split(' '):
         if morse == '':
-            result += ' '
+            result.append(' ')
             continue
         
-        result += decoding_character(morse)
+        result.append(decoding_character(morse))
+    
+    result = ''.join(result)
     return result
     # ==================================
 
