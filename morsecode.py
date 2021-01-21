@@ -125,12 +125,10 @@ def is_validated_morse_code(user_input):
         if morse not in morse_code_dict.values():
             result = False
 
-    return result
-        
     
-    result = True
-
+    
     return result
+    
     # ==================================
 
 
@@ -187,7 +185,7 @@ def decoding_character(morse_character):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     morse_code_dict = get_morse_code_dict()
-    alphabet_dict = {morse:alphabet for alphabet, morse in morse_code_dict.items() }
+    alphabet_dict = {morse:alphabet for alphabet, morse in morse_code_dict.items()}
     result = alphabet_dict[morse_character]
 
     return result
